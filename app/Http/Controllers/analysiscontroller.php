@@ -69,8 +69,13 @@ class analysiscontroller extends Controller
      */
     public function analysisofuserAjax(Request $request)
     {
-              $product = DB::table('billings')
-                ->select(DB::raw("SUM(product_price) as count"),'user_id')
+//               $product = DB::table('billings')
+//                 ->select(DB::raw("SUM(product_price) as count"),'user_id')
+//                 ->groupby('user_id')
+//                     ->pluck('count');
+        
+         $product = DB::table('sales')
+                ->select(DB::raw("SUM(total) as count"),'user_id')
                 ->groupby('user_id')
                     ->pluck('count');
   
